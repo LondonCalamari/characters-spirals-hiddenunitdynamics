@@ -1,1 +1,1 @@
-# characters-spirals-hiddenunitdynamics
+# characters, spirals and hidden unit dynamics
