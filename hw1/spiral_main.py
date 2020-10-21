@@ -43,7 +43,7 @@ def graph_output(net):
         net.train() # toggle batch norm, dropout back again
 
         pred = (output >= 0.5).float()
-
+        #pred = output
         # plot function computed by model
         plt.clf()
         plt.pcolormesh(xrange,yrange,pred.cpu().view(yrange.size()[0],xrange.size()[0]), cmap='Wistia')
@@ -54,7 +54,7 @@ parser.add_argument('--net',type=str,default='raw',help='polar or raw')
 parser.add_argument('--init',type=float,default=0.1,help='initial weight size')
 parser.add_argument('--hid',type=int,default='10',help='number of hidden units')
 parser.add_argument('--lr',type=float,default=0.01,help='learning rate')
-parser.add_argument('--epochs',type=int,default='100000',help='max training epochs')
+parser.add_argument('--epochs',type=int,default='20000',help='max training epochs')
 args = parser.parse_args()
 
 df = pd.read_csv('spirals.csv')
@@ -67,7 +67,7 @@ full_input  = data[:,0:num_input]
 full_target = data[:,num_input:num_input+1]
 
 train_dataset = torch.utils.data.TensorDataset(full_input,full_target)
-train_loader  = torch.utils.data.DataLoader(train_dataset,batch_size=97)
+train_loader  = torch.utils.data.DataLoader(train_dataset,batch_size=194)
 
 # choose network architecture
 if args.net == 'polar':
